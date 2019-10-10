@@ -1,85 +1,73 @@
-# NEKit
+NEKit
+通过https://gitter.im/zhuhaow/NEKit加入聊天 通过https://telegram.me/NEKitGroup加入聊天 建立状态 GitHub版本 代码气候 编码 迦太基兼容 GitHub许可证
 
-[![Join the chat at https://gitter.im/zhuhaow/NEKit](https://badges.gitter.im/zhuhaow/NEKit.svg)](https://gitter.im/zhuhaow/NEKit?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge) [![Join the chat at https://telegram.me/NEKitGroup](https://img.shields.io/badge/chat-on%20Telegram-blue.svg)](https://telegram.me/NEKitGroup) [![Build Status](https://travis-ci.org/zhuhaow/NEKit.svg?branch=master)](https://travis-ci.org/zhuhaow/NEKit) [![GitHub release](https://img.shields.io/github/release/zhuhaow/NEKit.svg)](https://github.com/zhuhaow/NEKit/releases) [![codecov](https://codecov.io/gh/zhuhaow/NEKit/branch/master/graph/badge.svg)](https://codecov.io/gh/zhuhaow/NEKit) [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage) [![GitHub license](https://img.shields.io/badge/license-BSD_3--Clause-blue.svg)](LICENSE.md)
+网络扩展框架的工具包。
 
-**Take a look at the next generation of this project, [libnekit](https://github.com/zhuhaow/libnekit).**
+NEKit是Soca的继任者。NEKit的主要目标是在构建Network Extension应用程序时提供所需的功能，NETunnelProvider以绕过网络过滤和审查，同时保持框架尽可能不受干扰。
 
-A toolkit for Network Extension Framework.
+NEKit不依赖于网络扩展框架。您可以使用没有网络扩展权限的NEKit在几行中构建基于规则的代理。
 
-NEKit is the successor of [Soca](https://github.com/zhuhaow/soca-ios). The main goal of NEKit is to provide things needed in building a Network Extension app with `NETunnelProvider` to bypass network filtering and censorship while keep the framework as non-opinionated as possible.
+TUNInterface由于它无法正常工作，请暂时不要启用它。
 
-**NEKit does not depend on Network Extension framework. You can use NEKit without Network Extension entitlement to build a rule based proxy in a few lines.**
+您应该签出两个演示。
 
-**Do not enable `TUNInterface` as of now since it is not working.**
+SpechtLite不需要网络扩展，任何人都可以使用它。
 
-There are two demos that you should check out.
+Specht是另一个需要网络扩展授权的演示。
 
-[SpechtLite](https://github.com/zhuhaow/SpechtLite) does not require Network Extension and anyone can use it.
+目前，NEKit支持：
 
-[Specht](https://github.com/zhuhaow/Specht) is another demo that requires Network Extension entitlement.
+根据远程主机位置，远程主机域或代理的连接速度，通过不同的代理转发请求。
+集成的tun2socks框架可将TCP数据包重组为TCP流。
+重写请求和响应的DNS服务器。
+一些用于构建IP数据包的工具。
+…
+在这里检查文件。
 
-Currently, NEKit supports:
+另外，如果您只需要带有GUI支持shadowsocks的开源iOS应用，您可能会对Potatso更加感兴趣。
 
-- Forward requests through different proxies based on remote host location, remote host domain or the connection speed of proxies.
-- Integrated tun2socks framework to reassemble TCP packets into TCP flows.
-- A DNS server that rewrites request and response.
-- Some tools to build IP packets.
-- ...
+Wingy是使用NEKit构建的免费应用程序，可在App Store上为您的iDevice使用。注意Wingy不是由我创建或与我无关。
 
-**Part of the following content may be out of date. But the general design philosophy still holds.**
-Check document [here](https://zhuhaow.github.io/NEKit), which should be up to date.
+如果您有任何疑问（不是错误报告），请加入Gitter或Telegram，而不要提出问题。
 
-Also, you may be more interested in [Potatso](https://github.com/shadowsocks/Potatso-iOS) if you just need an open source iOS app with GUI supporting shadowsocks.
+原理
+NEKit试图变得尽可能灵活和不受限制。
 
-**[Wingy](https://itunes.apple.com/cn/app/wingy-mian-fei-banvpn-ke-hu/id1148026741?mt=8) is a free app built with NEKit available on App Store for your iDevice.** Note Wingy is not created by or affiliated with me.
+但是，如果您想从网络层重现传输层，它并不一定像您想的那样模块化。
 
-If you have any questions (not bug report), **please join Gitter or Telegram instead of opening an issue**.
+NEKit遵循一项基本原则以保持最佳的网络性能：连接到目标服务器的设备直接解析域。
 
-## Principle
+如果您设备上的应用程序直接连接到本地代理服务器，那么这应该不是问题，在这里我们可以获取请求域信息，然后根据需要将其发送到远程代理服务器。
 
-NEKit tries to be as flexible and non-opionated as possible. 
+但是请考虑一下，如果应用程序试图自己建立套接字连接，通常包括两个步骤：
 
-However, it is not always as modular as you may think if you want to reproduce transport layer from network layer.
+进行DNS查找以找到目标服务器的IP地址。
+通过系统提供的套接字API连接到远程服务器。
+我们只能从TUN接口读取两个独立的信息，一个是包含DNS查找请求的UDP数据包，另一个是由一系列TCP数据包组成的TCP流。因此，我们无法知道TCP流的初始请求域。而且由于同一主机上可能有多个域，因此无法通过保存DNS响应并稍后反向查找来获得源域。
 
-NEKit follows one fundamental principle to keep the best network performance: The device connecting to target server directly resolves the domain. 
+唯一的解决方案是创建一个伪IP池，并为每个请求的域分配一个唯一的伪IP，这样我们就可以反向查找。之后，每个连接都需要从DNS服务器进行查找；这是NEKit唯一已封装在中的非模块化部分ConnectSession。
 
-This should not be a problem if the applications on your device connect to the local proxy server directly, where we can get the request domain information then send that to remote proxy server if needed.
+用法
+将其添加到您的项目
+我建议将此项目添加到您的项目中，这样更易​​于调试。
 
-But consider that if an application tries to make a socket connection by itself, which generally consists of two steps: 
+但是，您仍然可以将其与Carthage一起使用（由于NEKit使用Carthage，因此您仍然需要Carthage），方法是添加
 
-1. Make a DNS lookup to find the IP address of the target server.
-2. Connect to the remote server by socket API provided by the system.
-
-We can read only two independent things from the TUN interface, a UDP packet containing the DNS lookup request and a TCP flow consisting of a serial of TCP packets. So there is no way we can know the initial request domain for the TCP flow. And since there may be multiple domains served on the same host, we can not get the origin domain by saving the DNS response and looking that up reversely later.
-
-The only solution is to create a fake IP pool and assign each requested domain with a unique fake IP so we can look that up reversely. Every connection needs to look that up from the DNS server afterwards; this is the only non-modular part of NEKit which is already encapsulated in `ConnectSession`.
-
-## Usage
-
-### Add it to you project
-I recommend adding this project to your project, which is easier to debug. 
-
-However, you can still use it with Carthage (you'll need Carthage anyway since NEKit uses Carthage) by adding
-```ruby
 github "zhuhaow/NEKit"
-```
-to you `Cartfile`.
+给你Cartfile。
 
-Use 
-```carthage update --no-use-binaries --platform mac,ios```
-to install all frameworks. Do not use pre-compiled binaries since some of them might be buggy.
+使用 carthage update --no-use-binaries --platform mac,ios 安装所有的框架。不要使用预编译的二进制文件，因为其中一些可能是错误的。
 
-### Overview
-NEKit basically consists of two parts, a proxy server forwarding socket data based on user defined rules and an IP stack reassembling IP packets back to TCP flow as a socket.
+总览
+NEKit基本上由两部分组成：代理服务器根据用户定义的规则转发套接字数据； IP堆栈将IP数据包作为套接字重新组合到TCP流中。
 
-### Rule manager
-Before starting any proxy server, we need to define rules.
+规则管理员
+在启动任何代理服务器之前，我们需要定义规则。
 
-Each rule consists of two parts, one defining what kinding of request matches this rule and the other defining what adapter to use. An adapter represents the abstraction of a socket connection to a remote proxy server (or remote host). We use `AdapterFactory` to build adapters. 
+每个规则由两部分组成，一个部分定义与该规则匹配的请求种类，另一部分定义要使用的适配器。适配器表示与远程代理服务器（或远程主机）的套接字连接的抽象。我们AdapterFactory用来构建适配器。
 
-NEKit provides `AdapterSocket` supporting HTTP/HTTPS/SOCK5 proxy and Shadowsocks(AES-128-CFB/AES-192-CFB/AES-256-CFB/chacha20/salsa20/rc4-md5). Let me know if there is any other type of proxy needed. You can also implement your own `AdapterSocket`.
+NEKit提供了AdapterSocket支持的HTTP / HTTPS / SOCK5代理和Shadowsocks（AES-128-CFB / AES-192-CFB / AES-256-CFB / chacha20 / salsa20 / rc4-md5）。让我知道是否需要其他任何类型的代理。您也可以实现自己的AdapterSocket。
 
-```swift
 // Define remote adapter first
 let directAdapterFactory = DirectAdapterFactory()
 let httpAdapterFactory = HTTPAdapterFactory(serverHost: "remote.http.proxy", serverPort: 3128, auth: nil)
@@ -96,105 +84,76 @@ let manager = RuleManager(fromRules: [listRule, chinaRule, allRule], appendDirec
 
 // Set this manager as the active manager
 RuleManager.currentManager = ruleManager
-```
+还Configuration可以从Yaml配置文件中加载规则。但是不建议这样做。
 
-There is also `Configuration` to load rules from a Yaml config file. But that is not recommended.
+代理服务器
+现在，我们可以在本地启动HTTP / SOCKS5代理服务器。
 
-
-### Proxy server
-Now we can start a HTTP/SOCKS5 proxy server locally.
-
-```swift
-let server = GCDHTTPProxyServer(address: IPv4Address(fromString: "127.0.0.1"), port: Port(port: 9090))
+let server = GCDHTTPProxyServer(address: IPv4Address(fromString: "127.0.0.1"), port: Port(port: 9090)
 try! server.start()
-```
+现在有一个HTTP代理服务器正在运行，127.0.0.1:9090该服务器将根据中定义的规则转发请求RuleManager.currentManager。
 
-Now there is a HTTP proxy server running on `127.0.0.1:9090` which will forward requests based on rules defined in `RuleManager.currentManager`.
+如果您不想处理IP数据包，仅此而已，只需127.0.0.1:9090在“系统偏好设置”中将代理设置为即可。
 
-If you do not want to handle IP packets, then that's it, just set the proxy to `127.0.0.1:9090` in System Preferences and you are good to go.
+如果您想继续阅读，则必须向Apple请求网络扩展权利。
 
-If you want to read on, you will have to request Network Extention entitlement from Apple. 
+但是，即使您使用NetworkExtention设置网络代理，也并不意味着您必须处理数据包，只是不要将任何内容路由到TUN接口，也不要进行设置IPStack。对于iOS，如果您声称已实现，但什么也不做，用户可能永远不会注意到。
 
-But even if you use NetworkExtention to set up the network proxy, it does not mean you have to process packets, just do not route anything to the TUN interface and do not set up `IPStack`. For iOS, if you claim you have implemented it but just do nothing the users probably will never notice.
+IP堆栈
+假设您已经使用正确的路由配置设置了一个有效的扩展程序（谷歌如何，这并不容易）。
 
-### IP stack
+在
 
-Assuming you already set up a working extension with correct routing configurations (Google how, this is not trivial).
-
-In 
-
-```swift
 startTunnelWithOptions(options: [String : NSObject]?, completionHandler: (NSError?) -> Void)
-``` 
-set `RuleManager` and start proxy server(s) and then create an instance representing the TUN interface by
+设置RuleManager并启动代理服务器，然后通过以下方式创建代表TUN接口的实例
 
-```swift
 let stack = TUNInterface(packetFlow: packetFlow)
-``` 
+我们还必须设置
 
-We also have to set
-
-```swift
 RawSocketFactory.TunnelProvider = self
-```
-to create socket to connect to remote servers with `NETunnelProvider`.
+创建套接字以使用来连接到远程服务器NETunnelProvider。
 
-Then we need to register ip stacks implementing `IPStackProtocol` to process IP packets.
+然后，我们需要注册IPStackProtocol用于处理IP数据包的ip堆栈。
 
-NEKit provides several stacks.
+NEKit提供了几个堆栈。
 
-#### TCPStack
-`TCPStack` process TCP packets and reassembles them back into TCP flows then send them to the proxy server specified by `proxyServer` variable. You have to set `proxyServer` before registering `TCPStack` to `TUNInterface`.
+TCP协议栈
+TCPStack处理TCP数据包并将其重新组合回TCP流，然后将其发送到proxyServer变量指定的代理服务器。你必须设置proxyServer在注册前TCPStack到TUNInterface。
 
-#### DNSServer
-DNS server is implemented as an IP stack processing UDP packets send to it.
+DNS服务器
+DNS服务器被实现为处理UDP数据包的IP堆栈。
 
-First create an DNS server with a fake IP pool. (You should use fake IP, but you can disable it if you want to by set it to nil.)
+首先创建一个带有假IP池的DNS服务器。（您应该使用伪造的IP，但是如果要禁用它，可以将其设置为nil。）
 
-```swift
 let fakeIPPool = IPv4Pool(start: IPv4Address(fromString: "172.169.1.0"), end: IPv4Address(fromString: "172.169.255.0"))
 let dnsServer = DNSServer(address: IPv4Address(fromString: "172.169.0.1"), port: Port(port: 53), fakeIPPool: fakeIPPool)
-```
+然后，我们必须定义如何解析DNS请求，NEKit提供了最简单的方法，它使用UDP协议将请求直接发送到远程DNS服务器，您可以通过实现来做任何您想做的事情DNSResolverProtocol。
 
-Then we have to define how to resolve the DNS requests, NEKit provides the most trivial one which sends the request to remote DNS server directly with UDP protocol, you can do anything you want by implementing `DNSResolverProtocol`.
-
-```swift
 let resolver = UDPDNSResolver(address: IPv4Address(fromString: "114.114.114.114"), port: Port(port: 53))
 dnsServer.registerResolver(resolver)
-```
+设置非常重要
 
-It is very important to set 
-
-```swift 
 DNSServer.currentServer = dnsServer
-```
-so we can look up the fake IP reversely.
+因此我们可以反向查找虚假IP。
 
-#### UDPDirectStack
-`UDPDirectStack` sends and reads UDP packets to and from remote server directly.
+UDP直接堆叠
+UDPDirectStack 直接在远程服务器之间发送和读取UDP数据包。
 
+您可以通过以下方式将这些堆栈注册到TUN接口
 
-You can register these stack to TUN interface by
-
-```swift
 interface.registerStack(dnsServer)
 // Note this sends out every UDP packets directly so this must comes after any other stack that processes UDP packets.
 interface.registerStack(UDPDirectStack())
 interface.registerStack(TCPStack.stack)
-```
+一切设置完成后，您应该通过调用interface.start()的完成处理程序来开始处理数据包setTunnelNetworkSettings。
 
-When everything is set up, you should start processing packets by calling `interface.start()` in the completion handler of `setTunnelNetworkSettings`.
+事件
+您可以Observer<T>用来观察代理服务器和套接字中的事件。以观察者DebugObserver.swift为例。
 
-## Event
+潜入
+框架概述
+代理服务器的结构如下：
 
-You can use `Observer<T>` to observe the events in proxy servers and sockets. Check out observers in `DebugObserver.swift` as an example.
-
-## Dive in
-
-### Framework overview
-The structure of the proxy server is given as follows:
-
-```
 ┌──────────────────────────────────────────────────┐
 │                                                  │
 │                   ProxyServer                    │
@@ -218,53 +177,41 @@ The structure of the proxy server is given as follows:
        ╔══════▼═══════╗     ╔═══════▼══════╗        
        ║    LOCAL     ║     ║    REMOTE    ║        
        ╚══════════════╝     ╚══════════════╝        
-```
+当从代理服务器的侦听套接字接受新套接字时，它将以某种RawSocketProtocol原始包装形式封装在原始实现中，该套接字仅用于读取和写入数据。
 
-When a new socket is accepted from the listening socket of the proxy server, it is wrapped in some implementation of `RawSocketProtocol` as a raw socket which just reads and writes data. 
+然后将其包装在一个子类中，ProxySocket该子类封装了代理逻辑。
 
-Then it is wrapped in a subclass of `ProxySocket` which encapsulates the proxy logic. 
+该TCPStack包裹重新组装的TCP流量（TUNTCPSocket）中DirectProxySocket，然后将其发送到mainProxy服务器。
 
-The `TCPStack` wraps the reassembled TCP flow (`TUNTCPSocket`) in `DirectProxySocket` then send it to the `mainProxy` server.
+同样，AdapterSocket封装了如何连接到远程并处理数据流的逻辑。
 
-Similarly, `AdapterSocket` encapsulated the logic of how to connect to remote and process the data flow.
+NEKit几乎所有内容都遵循委托模式。如果您不熟悉它，则应该首先学习它，方法可能是学习如何使用CocoaAsyncSocket（请注意，NEKit中的套接字不是线程安全的，这与GCDAsyncSocket不同）。
 
-Pretty much everything of NEKit follows the [delegation pattern](https://en.wikipedia.org/wiki/Delegation_pattern). If you are not familiar with that, you should learn it first, probabaly by learning how to use [CocoaAsyncSocket](https://github.com/robbiehanson/CocoaAsyncSocket) (note that the sockets in NEKit are **not** thread-safe which is different from GCDAsyncSocket).
+一生 Tunnel
+当RawSocketProtocol套接字接受或创建时TCPStack，它将包裹在a中，ProxySocket然后包裹在Tunnel。该Tunnel会打电话proxySocket.openSocket()让代理插座开始处理数据。
 
-### The lifetime of a `Tunnel`
+当ProxySocket读取足够的数据来建立一个ConnectSession，它调用func didReceiveRequest(request: ConnectSession, from: ProxySocket)了的delegate（应该是Tunnel）。
 
-When a `RawSocketProtocol` socket is accepted or created by `TCPStack`, it is wrapped in a `ProxySocket` then in a `Tunnel`. The `Tunnel` will call `proxySocket.openSocket()` to let the proxy socket start process data. 
+在Tunnel那么这个请求相匹配RuleManager，以获得相应的AdapterFactory。然后func openSocketWithSession(session: ConnectSession)产生的AdapterSocket被调用以连接到远程服务器。
 
-When the `ProxySocket` read enough data to build a `ConnectSession`, it calls `func didReceiveRequest(request: ConnectSession, from: ProxySocket)` of the `delegate` (which should be the `Tunnel`). 
+该AdapterSocket电话func didConnect(adapterSocket: AdapterSocket, withResponse response: ConnectResponse)的Tunnel，让ProxySocket有机会到远程响应响应。（到目前为止，这已被忽略。）
 
-The `Tunnel` then matches this request in `RuleManager` to get the corresponding `AdapterFactory`. Then `func openSocketWithSession(session: ConnectSession)` of the produced `AdapterSocket` is called to connect to remote server.
+最后，当ProxySocket并AdapterSocket准备转发数据，他们应该打电话func readyToForward(socket: SocketProtocol)的Tunnel，让它知道。当双方准备就绪时，隧道将从双方进行读取，然后将接收到的数据原封不动地发送到另一侧。
 
-The `AdapterSocket` calls `func didConnect(adapterSocket: AdapterSocket, withResponse response: ConnectResponse)` of the `Tunnel` to let the `ProxySocket` has a chance to respond to remote response. (This is ignored as of now.) 
+当隧道的任一侧断开连接时，将func didDisconnect(socket: SocketProtocol)调用，然后主动关闭两侧。Tunnel当双方成功断开连接时，将释放。
 
-Finally, when the `ProxySocket` and `AdapterSocket` are ready to forward data, they should call `func readyToForward(socket: SocketProtocol)` of the `Tunnel` to let it know. When both sides are ready, the tunnel will read from both sides and then send the received data to the other side intact.
+去做
+[]文件。
+[] IPv6支持。
+执照
+版权所有©2016，Zhuhao Wang版权所有。
 
-When any side of the tunnel is disconnected, the `func didDisconnect(socket: SocketProtocol)` is called then both sides are closed actively. The `Tunnel` will be released when both sides disconnect successfully.
+如果满足以下条件，则允许以源代码和二进制形式进行重新分发和使用，无论是否经过修改，都可以：
 
+重新分发源代码必须保留以上版权声明，此条件列表和以下免责声明。
 
-## TODO
-- [ ] Documents.
-- [ ] IPv6 support.
+二进制形式的重新分发必须在分发随附的文档和/或其他材料中复制以上版权声明，此条件列表以及以下免责声明。
 
-## License
-Copyright (c) 2016, Zhuhao Wang
-All rights reserved.
+未经事先特别书面许可，不得使用NEKit的名称或其贡献者的名称来认可或促销从该软件衍生的产品。
 
-Redistribution and use in source and binary forms, with or without
-modification, are permitted provided that the following conditions are met:
-
-* Redistributions of source code must retain the above copyright notice, this
-  list of conditions and the following disclaimer.
-
-* Redistributions in binary form must reproduce the above copyright notice,
-  this list of conditions and the following disclaimer in the documentation
-  and/or other materials provided with the distribution.
-
-* Neither the name of NEKit nor the names of its
-  contributors may be used to endorse or promote products derived from
-  this software without specific prior written permission.
-
-THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+本软件由版权所有者和贡献者AS IS任何明示或默示的担保，包括但不限于针对特定用途的适销性和适用性的暗示担保。在任何情况下，版权持有人或贡献者均不对任何直接，间接，偶发，特殊，专有或后果性的损害（包括但不限于，替代商品或服务的购买，使用，数据，或业务中断），无论基于合同，严格责任或侵权行为（包括疏忽或其他方式），无论是出于任何责任，无论是否出于使用本软件的目的，即使已经事先告知，也已作了规定。
