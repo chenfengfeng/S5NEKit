@@ -288,7 +288,8 @@
 		36E9CD001DD6EEF5003597CE /* QueueFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36E9CCFE1DD6EEF5003597CE /* QueueFactory.swift */; };
 		36E9CD041DD6F0DE003597CE /* Resolver.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 360F392B1DD2068E002BED59 /* Resolver.framework */; };
 		36E9CD051DD6F0DE003597CE /* Resolver.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 360F392B1DD2068E002BED59 /* Resolver.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		B25B5F9923321C5700678962 /* SOCKS5AuthAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B25B5F9823321C5700678962 /* SOCKS5AuthAdapter.swift */; };
+		B2342114234EE60300CDA2B3 /* SOCKS5AuthAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2342113234EE60300CDA2B3 /* SOCKS5AuthAdapter.swift */; };
+		B2342116234EE61D00CDA2B3 /* UDPAssociateStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2342115234EE61D00CDA2B3 /* UDPAssociateStack.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -556,7 +557,8 @@
 		36DB3CEE1E0D610500D907DB /* IPAddressSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IPAddressSpec.swift; sourceTree = "<group>"; };
 		36E44A011CF2ED4800185DBF /* TUNInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TUNInterface.swift; sourceTree = "<group>"; };
 		36E9CCFE1DD6EEF5003597CE /* QueueFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = QueueFactory.swift; path = Tunnel/QueueFactory.swift; sourceTree = "<group>"; };
-		B25B5F9823321C5700678962 /* SOCKS5AuthAdapter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SOCKS5AuthAdapter.swift; path = ../../../../../../vpn/VpnManager/SOCKS5AuthAdapter.swift; sourceTree = "<group>"; };
+		B2342113234EE60300CDA2B3 /* SOCKS5AuthAdapter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SOCKS5AuthAdapter.swift; sourceTree = "<group>"; };
+		B2342115234EE61D00CDA2B3 /* UDPAssociateStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UDPAssociateStack.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -907,7 +909,7 @@
 				366EB5AC1CDE0FCE00E0E942 /* HTTPAdapter.swift */,
 				368CBDA51D7911FA003CEA62 /* RejectAdapter.swift */,
 				3623479F1D824E4300A047DE /* SOCKS5Adapter.swift */,
-				B25B5F9823321C5700678962 /* SOCKS5AuthAdapter.swift */,
+				B2342113234EE60300CDA2B3 /* SOCKS5AuthAdapter.swift */,
 				366EB5AD1CDE0FCE00E0E942 /* SecureHTTPAdapter.swift */,
 				366EB5C21CDF375B00E0E942 /* SpeedAdapter.swift */,
 			);
@@ -1066,6 +1068,7 @@
 				36C63E031D02C0B700A00CA2 /* TCPStack.swift */,
 				36E44A011CF2ED4800185DBF /* TUNInterface.swift */,
 				36411A781D1FC224005F4108 /* UDPDirectStack.swift */,
+				B2342115234EE61D00CDA2B3 /* UDPAssociateStack.swift */,
 			);
 			path = IPStack;
 			sourceTree = "<group>";
@@ -1558,7 +1561,7 @@
 				36C48D741CF88ED40071804F /* NWTCPSocket.swift in Sources */,
 				36C48D5A1CF88EB60071804F /* HTTPAdapterFactory.swift in Sources */,
 				3650FAE61D27BA5300444E79 /* SodiumStreamCrypto.swift in Sources */,
-				B25B5F9923321C5700678962 /* SOCKS5AuthAdapter.swift in Sources */,
+				B2342114234EE60300CDA2B3 /* SOCKS5AuthAdapter.swift in Sources */,
 				36411A811D214D32005F4108 /* PacketProtocolParser.swift in Sources */,
 				36B8936F1E17F97600881890 /* ResponseGenerator.swift in Sources */,
 				36C48D571CF88EB60071804F /* AdapterFactory.swift in Sources */,
@@ -1574,6 +1577,7 @@
 				36411A661D167AF2005F4108 /* DirectRule.swift in Sources */,
 				36C48D7A1CF88EDA0071804F /* DomainListRule.swift in Sources */,
 				36C48D621CF88EB60071804F /* ShadowsocksAdapter.swift in Sources */,
+				B2342116234EE61D00CDA2B3 /* UDPAssociateStack.swift in Sources */,
 				36411A631D167AE0005F4108 /* AllRule.swift in Sources */,
 				368CBDA71D7911FA003CEA62 /* RejectAdapter.swift in Sources */,
 				36C48D5F1CF88EB60071804F /* DirectAdapter.swift in Sources */,
