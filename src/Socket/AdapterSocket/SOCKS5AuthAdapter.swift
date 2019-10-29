@@ -66,7 +66,7 @@ class SOCKS5AuthAdapter: SOCKS5Adapter {
                     self.didRead(data: Data(), from: socket)
                 } else {
                     disconnect()
-                    return
+                    exit(0)
                 }
             }
             return
