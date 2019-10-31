@@ -1,4 +1,5 @@
 import Foundation
+import CocoaLumberjackSwift
 
 public class SOCKS5Adapter: AdapterSocket {
     enum SOCKS5AdapterStatus {
@@ -40,7 +41,9 @@ public class SOCKS5Adapter: AdapterSocket {
         do {
             internalStatus = .connecting
             try socket.connectTo(host: serverHost, port: serverPort, enableTLS: false, tlsSettings: nil)
-        } catch {}
+        } catch let error {
+            DDLogError("socket连接失败：\(error)")
+        }
     }
 
     public override func didConnectWith(socket: RawTCPSocketProtocol) {
@@ -78,6 +81,10 @@ public class SOCKS5Adapter: AdapterSocket {
             internalStatus = .readingResponseFirstPart
             socket.readDataTo(length: 5)
         case .readingResponseFirstPart:
+            guard data[1]==0 else {
+                DDLogError("SOCKS服务器出现了错误")
+                return
+            }
             var readLength = 0
             switch data[3] {
             case 1:

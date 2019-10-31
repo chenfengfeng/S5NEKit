@@ -3,10 +3,11 @@ import Foundation
 public class SOCKS5AuthAdapterFactory: ServerAdapterFactory {
     let username: String
     let password: String
-    public init(serverHost: String, serverPort: Int, username: String, password: String) {
-        self.username = username
-        self.password = password
-        super.init(serverHost: serverHost, serverPort: serverPort)
+    
+    public init(_ auth: socks5Auth) {
+        self.username = auth.username
+        self.password = auth.password
+        super.init(serverHost: auth.host, serverPort: auth.port)
     }
 
     override open func getAdapterFor(session: ConnectSession) -> AdapterSocket {
@@ -54,7 +55,7 @@ class SOCKS5AuthAdapter: SOCKS5Adapter {
 
                     waitAuthResult = true
                     socket.readDataTo(length: 2)
-                } else { // 协议失败
+                } else { // 协议失败,退出VPN
                     disconnect()
                     return
                 }
@@ -65,6 +66,7 @@ class SOCKS5AuthAdapter: SOCKS5Adapter {
                     internalStatus = .readingMethodResponse
                     self.didRead(data: Data(), from: socket)
                 } else {
+                    // 退出之前先进行保存退出原因，登录APP后就可以得知
                     disconnect()
                     exit(0)
                 }

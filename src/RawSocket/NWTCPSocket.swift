@@ -142,10 +142,13 @@ public class NWTCPSocket: NSObject, RawTCPSocketProtocol {
 
         connection!.readMinimumLength(1, maximumLength: Opt.MAXNWTCPSocketReadDataSize) { data, error in
             guard error == nil else {
-                DDLogError("NWTCPSocket got an error when reading data: \(String(describing: error))")
-                self.queueCall {
-                    self.disconnect()
+                let err = error! as NSError
+                if err.code==57 {
+                    self.queueCall {
+                        self.disconnect()
+                    }
                 }
+                DDLogError("NWTCPSocket got an error when reading data: \(String(describing: error))")
                 return
             }
 
@@ -269,6 +272,9 @@ public class NWTCPSocket: NSObject, RawTCPSocketProtocol {
                 self.readDataPrefix = rest
                 self.delegate?.didRead(data: matchData, from: self)
             } else {
+                let add = String(format: "%u", self.connection!)
+                DDLogInfo("读取的线程：\(Thread.current)\ntcp的内存地址：\(add)")
+                DDLogInfo("读取包的大小:\(data.count) 字节")
                 self.delegate?.didRead(data: data, from: self)
             }
         }
@@ -276,6 +282,8 @@ public class NWTCPSocket: NSObject, RawTCPSocketProtocol {
 
     private func send(data: Data) {
         writePending = true
+//        let add = String(format: "%u", connection!)
+//        DDLogInfo("发送的线程：\(Thread.current)\ntcp的内存地址：\(add)")
         self.connection!.write(data) { error in
             self.queueCall {
                 self.writePending = false

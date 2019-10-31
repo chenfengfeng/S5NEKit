@@ -160,12 +160,12 @@ public class UDPAssociateStack: IPStackProtocol, NWUDPSocketDelegate {
     public var outputFunc: (([Data], [NSNumber]) -> Void)!
 
     fileprivate let queue: DispatchQueue = DispatchQueue(label: "NEKit.UDPAssociateStack.SocketArrayQueue", attributes: [])
-
-    public init(serverHost: String, serverPort: Int, username: String? = nil, password: String? = nil) {
-        socks5Host = serverHost
-        socks5Port = serverPort
-        socks5AuthUsername = username
-        socks5AuthPassword = password
+    
+    public init(_ auth: socks5Auth) {
+        socks5Host = auth.host
+        socks5Port = auth.port
+        socks5AuthUsername = auth.username
+        socks5AuthPassword = auth.password
     }
 
     /**
@@ -184,6 +184,10 @@ public class UDPAssociateStack: IPStackProtocol, NWUDPSocketDelegate {
             if version.int32Value == AF_INET6 {
                 return false
             }
+        }
+        if IPPacket.peekDestinationPort(packet) == 53 {
+            DDLogInfo("拿到了dns请求:\(IPPacket.peekDestinationAddress(packet)!)")
+//            return false
         }
         if IPPacket.peekProtocol(packet) == .udp {
             input(packet)
