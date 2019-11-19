@@ -82,7 +82,7 @@ public class SOCKS5Adapter: AdapterSocket {
             socket.readDataTo(length: 5)
         case .readingResponseFirstPart:
             guard data[1]==0 else {
-                DDLogError("SOCKS服务器出现了错误")
+                DDLogError("SOCKS服务器出现了错误：\(data[1])")
                 return
             }
             var readLength = 0

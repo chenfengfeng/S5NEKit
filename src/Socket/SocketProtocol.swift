@@ -6,6 +6,7 @@ public class socks5Auth: NSObject {
     public var port: Int!
     public var username: String!
     public var password: String!
+    public var endtime:  TimeInterval!
 }
 
 /**

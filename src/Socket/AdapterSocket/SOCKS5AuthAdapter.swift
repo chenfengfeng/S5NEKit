@@ -3,15 +3,17 @@ import Foundation
 public class SOCKS5AuthAdapterFactory: ServerAdapterFactory {
     let username: String
     let password: String
+    let endtime:  TimeInterval
     
     public init(_ auth: socks5Auth) {
         self.username = auth.username
         self.password = auth.password
+        self.endtime  = auth.endtime
         super.init(serverHost: auth.host, serverPort: auth.port)
     }
 
     override open func getAdapterFor(session: ConnectSession) -> AdapterSocket {
-        let adapter = SOCKS5AuthAdapter(serverHost: serverHost, serverPort: serverPort, username: username, password: password)
+        let adapter = SOCKS5AuthAdapter(serverHost: serverHost, serverPort: serverPort, username: username, password: password, endtime: endtime)
         adapter.socket = RawSocketFactory.getRawSocket()
         return adapter
     }
@@ -20,11 +22,13 @@ public class SOCKS5AuthAdapterFactory: ServerAdapterFactory {
 class SOCKS5AuthAdapter: SOCKS5Adapter {
     let username: Data
     let password: Data
+    let endtime:  TimeInterval
     var waitAuthResult: Bool = false
 
-    public init(serverHost: String, serverPort: Int, username: String, password: String) {
+    public init(serverHost: String, serverPort: Int, username: String, password: String, endtime: TimeInterval) {
         self.username = username.data(using: .utf8)!
         self.password = password.data(using: .utf8)!
+        self.endtime  = endtime
         super.init(serverHost: serverHost, serverPort: serverPort)
         self.helloData = Data(bytes: UnsafePointer<UInt8>(([0x05, 0x01, 0x02] as [UInt8])), count: 3)
     }
@@ -37,7 +41,11 @@ class SOCKS5AuthAdapter: SOCKS5Adapter {
 
     override func didRead(data: Data, from socket: RawTCPSocketProtocol) {
         super.didRead(data: data, from: socket)
-
+        // 判断是否过期，过期就断开连接
+        if endtime<Date().timeIntervalSince1970 {
+            disconnect()
+            exit(0)
+        }
         if internalStatus == .connecting {
             if data.count != 2 { // 无论是协商认证，还是认证结果，返回字节都是 2
                 disconnect()

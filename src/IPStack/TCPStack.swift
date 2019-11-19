@@ -51,7 +51,7 @@ open class TCPStack: TSIPStackDelegate, IPStackProtocol {
             }
         }
         if IPPacket.peekProtocol(packet) == .tcp {
-            DDLogInfo("读取TCP包的大小:\(packet.count) 字节")
+//            DDLogInfo("读取TCP包的大小:\(packet.count) 字节")
             TSIPStack.stack.received(packet: packet)
             return true
         }

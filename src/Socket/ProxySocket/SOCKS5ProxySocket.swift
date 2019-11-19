@@ -116,11 +116,11 @@ public class SOCKS5ProxySocket: ProxySocket {
                     return
                 }
 
-//                guard p.baseAddress!.successor().pointee > 0 else {
-//                    // TODO: notify observer
-//                    self.disconnect()
-//                    return
-//                }
+                guard p.baseAddress!.successor().pointee > 0 else {
+                    // TODO: notify observer
+                    self.disconnect()
+                    return
+                }
 
                 self.readStatus = .readingMethods
                 self.socket.readDataTo(length: Int(p.baseAddress!.successor().pointee))

@@ -241,7 +241,7 @@ public class Tunnel: NSObject, SocketDelegate {
                 return
             }
             
-            self.proxySocket.readData()
+            proxySocket.readData()
         }
     }
     

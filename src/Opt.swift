@@ -20,5 +20,5 @@ public struct Opt {
 
     public static var DNSTimeout = 1
 
-    public static var forwardReadInterval = 10
+    public static var forwardReadInterval = 50
 }
