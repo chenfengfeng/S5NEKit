@@ -87,8 +87,6 @@ public class NWTCPSocket: NSObject, RawTCPSocketProtocol {
      */
     public func disconnect() {
         cancelled = true
-        let add = String(format: "%u", connection!)
-        DDLogInfo("socks断开了连接,socks内存地址：\(add)")
         if connection == nil  || connection!.state == .cancelled {
             delegate?.didDisconnectWith(socket: self)
         } else {
@@ -140,29 +138,15 @@ public class NWTCPSocket: NSObject, RawTCPSocketProtocol {
         guard !cancelled else {
             return
         }
-        
-        connection!.readMinimumLength(0, maximumLength: Opt.MAXNWTCPSocketReadDataSize) { data, error in
+
+        connection!.readMinimumLength(1, maximumLength: Opt.MAXNWTCPSocketReadDataSize) { data, error in
             guard error == nil else {
-                let err = error! as NSError
-                if err.code==57 {
-                    let add = String(format: "%u", self.connection!)
-                    DDLogInfo("代理服务器断开连接，socket内存地址：\(add)")
-//                    DDLogError("NWTCPSocket got an error when reading data: \(String(describing: error))")
-                    self.queueCall {
-                        self.disconnect()
-                    }
+                DDLogError("NWTCPSocket got an error when reading data: \(String(describing: error))")
+                self.queueCall {
+                    self.disconnect()
                 }
                 return
             }
-            if data!.count<6 {
-                let dd = data! as NSData
-                DDLogInfo("读取的数据：\(dd)")
-            }else{
-                DDLogInfo("读取的数据大小：\(data!.count)")
-            }
-            let add = String(format: "%u", self.connection!)
-            DDLogInfo("读取的socket的内存地址：\(add)")
-            
             self.readCallback(data: data)
         }
     }
@@ -290,19 +274,6 @@ public class NWTCPSocket: NSObject, RawTCPSocketProtocol {
 
     private func send(data: Data) {
         writePending = true
-        
-        let str = NSString(data: data, encoding: String.Encoding.utf8.rawValue)
-        if str != nil {
-            if data.count<6 {
-                let dd = data as NSData
-                DDLogInfo("发送的数据：\(dd)")
-            }else{
-                DDLogInfo("发送的数据：\(String.init(describing: str!))")
-            }
-            let add = String(format: "%u", self.connection!)
-            DDLogInfo("发送的socket的内存地址：\(add)")
-        }
-        
         self.connection!.write(data) { error in
             self.queueCall {
                 self.writePending = false
