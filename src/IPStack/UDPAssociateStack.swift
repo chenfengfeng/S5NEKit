@@ -185,11 +185,8 @@ public class UDPAssociateStack: IPStackProtocol, NWUDPSocketDelegate {
                 return false
             }
         }
-        if IPPacket.peekDestinationPort(packet) == 53 {
-            DDLogInfo("拿到了dns请求:\(IPPacket.peekDestinationAddress(packet)!)")
-//            return false
-        }
         if IPPacket.peekProtocol(packet) == .udp {
+            DDLogInfo("读取UDP包的大小:\(packet.count) 字节")
             input(packet)
             return true
         }
@@ -220,7 +217,9 @@ public class UDPAssociateStack: IPStackProtocol, NWUDPSocketDelegate {
         }
 
         if session.agent?.host == nil || session.agent?.port == nil {
-            // 将来考虑增加一个 buffer，然后在 delegate 里做重试
+            DispatchQueue.main.asyncAfter(deadline: .now()+0.5) {
+                self.input(packetData)
+            }
             return
         }
 

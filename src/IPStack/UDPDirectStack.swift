@@ -1,4 +1,5 @@
 import Foundation
+import CocoaLumberjackSwift
 
 struct ConnectInfo {
     let sourceAddress: IPAddress
@@ -43,6 +44,7 @@ public class UDPDirectStack: IPStackProtocol, NWUDPSocketDelegate {
             }
         }
         if IPPacket.peekProtocol(packet) == .udp {
+            DDLogInfo("读取UDP包的大小:\(packet.count) 字节")
             input(packet)
             return true
         }

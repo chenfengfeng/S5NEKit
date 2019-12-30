@@ -62,7 +62,6 @@ open class TUNInterface {
     fileprivate func readPackets() {
         packetFlow?.readPackets { packets, versions in
             QueueFactory.getQueue().async {
-                DDLogInfo("readPackets : \(packets.count)")
                 for (i, packet) in packets.enumerated() {
                     for stack in self.stacks {
                         if stack.input(packet: packet, version: versions[i]) {
