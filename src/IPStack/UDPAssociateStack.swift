@@ -17,8 +17,8 @@ public class SOCKS5AssociateAdapter: AdapterSocket {
     let password: Data?
     var helloData: Data
     let associateData = Data([0x05, 0x03 , 0x00 , 0x01 ,
-                                0x00, 0x00, 0x00, 0x00,
-                                0x00, 0x00 ])
+                              0x00, 0x00, 0x00, 0x00,
+                              0x00, 0x00 ])
 
     public enum ReadTag: Int {
         case methodResponse = -20000, connectResponseFirstPart, connectResponseSecondPart

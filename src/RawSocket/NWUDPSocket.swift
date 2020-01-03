@@ -79,7 +79,7 @@ public class NWUDPSocket: NSObject {
                     sSelf.delegate?.didReceive(data: data, from: sSelf)
                 }
             }
-            }, maxDatagrams: 32)
+            }, maxDatagrams: 64)
     }
     
     /**
