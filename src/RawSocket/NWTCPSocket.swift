@@ -87,6 +87,7 @@ public class NWTCPSocket: NSObject, RawTCPSocketProtocol {
      */
     public func disconnect() {
         cancelled = true
+
         if connection == nil  || connection!.state == .cancelled {
             delegate?.didDisconnectWith(socket: self)
         } else {
@@ -141,12 +142,13 @@ public class NWTCPSocket: NSObject, RawTCPSocketProtocol {
 
         connection!.readMinimumLength(1, maximumLength: Opt.MAXNWTCPSocketReadDataSize) { data, error in
             guard error == nil else {
-//                DDLogError("NWTCPSocket got an error when reading data: \(String(describing: error))")
+                DDLogError("NWTCPSocket got an error when reading data: \(String(describing: error))")
                 self.queueCall {
                     self.disconnect()
                 }
                 return
             }
+
             self.readCallback(data: data)
         }
     }
@@ -164,7 +166,7 @@ public class NWTCPSocket: NSObject, RawTCPSocketProtocol {
 
         connection!.readLength(length) { data, error in
             guard error == nil else {
-//                DDLogError("NWTCPSocket got an error when reading data: \(String(describing: error))")
+                DDLogError("NWTCPSocket got an error when reading data: \(String(describing: error))")
                 self.queueCall {
                     self.disconnect()
                 }
@@ -246,7 +248,7 @@ public class NWTCPSocket: NSObject, RawTCPSocketProtocol {
 
         queueCall {
             guard let data = self.consumeReadData(data) else {
-                // 远程读取已关闭，但这没关系，无需执行任何操作，如果再次读取此套接字，则会发生错误。
+                // remote read is closed, but this is okay, nothing need to be done, if this socket is read again, then error occurs.
                 return
             }
 
@@ -283,6 +285,7 @@ public class NWTCPSocket: NSObject, RawTCPSocketProtocol {
                     self.disconnect()
                     return
                 }
+
                 self.delegate?.didWrite(data: data, by: self)
                 self.checkStatus()
             }

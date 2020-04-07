@@ -288,8 +288,10 @@
 		36E9CD001DD6EEF5003597CE /* QueueFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36E9CCFE1DD6EEF5003597CE /* QueueFactory.swift */; };
 		36E9CD041DD6F0DE003597CE /* Resolver.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 360F392B1DD2068E002BED59 /* Resolver.framework */; };
 		36E9CD051DD6F0DE003597CE /* Resolver.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 360F392B1DD2068E002BED59 /* Resolver.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		B2342114234EE60300CDA2B3 /* SOCKS5AuthAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2342113234EE60300CDA2B3 /* SOCKS5AuthAdapter.swift */; };
-		B2342116234EE61D00CDA2B3 /* UDPAssociateStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2342115234EE61D00CDA2B3 /* UDPAssociateStack.swift */; };
+		B2A649E7243C30FF0037B7D2 /* UDPAssociateStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2A649E6243C30FF0037B7D2 /* UDPAssociateStack.swift */; };
+		B2A649E8243C30FF0037B7D2 /* UDPAssociateStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2A649E6243C30FF0037B7D2 /* UDPAssociateStack.swift */; };
+		B2A649EA243C31690037B7D2 /* SOCKS5AuthAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2A649E9243C31690037B7D2 /* SOCKS5AuthAdapter.swift */; };
+		B2A649EB243C31690037B7D2 /* SOCKS5AuthAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2A649E9243C31690037B7D2 /* SOCKS5AuthAdapter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -557,8 +559,8 @@
 		36DB3CEE1E0D610500D907DB /* IPAddressSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IPAddressSpec.swift; sourceTree = "<group>"; };
 		36E44A011CF2ED4800185DBF /* TUNInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TUNInterface.swift; sourceTree = "<group>"; };
 		36E9CCFE1DD6EEF5003597CE /* QueueFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = QueueFactory.swift; path = Tunnel/QueueFactory.swift; sourceTree = "<group>"; };
-		B2342113234EE60300CDA2B3 /* SOCKS5AuthAdapter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SOCKS5AuthAdapter.swift; sourceTree = "<group>"; };
-		B2342115234EE61D00CDA2B3 /* UDPAssociateStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UDPAssociateStack.swift; sourceTree = "<group>"; };
+		B2A649E6243C30FF0037B7D2 /* UDPAssociateStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UDPAssociateStack.swift; sourceTree = "<group>"; };
+		B2A649E9243C31690037B7D2 /* SOCKS5AuthAdapter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SOCKS5AuthAdapter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -904,14 +906,14 @@
 			children = (
 				36B162331CDDA0F300F24C97 /* Factory */,
 				36B2ACD41DDF2BA600BD2C3D /* Shadowsocks */,
-				36B162151CDDA0EA00F24C97 /* AdapterSocket.swift */,
-				36B162321CDDA0F300F24C97 /* DirectAdapter.swift */,
 				366EB5AC1CDE0FCE00E0E942 /* HTTPAdapter.swift */,
-				368CBDA51D7911FA003CEA62 /* RejectAdapter.swift */,
-				3623479F1D824E4300A047DE /* SOCKS5Adapter.swift */,
-				B2342113234EE60300CDA2B3 /* SOCKS5AuthAdapter.swift */,
-				366EB5AD1CDE0FCE00E0E942 /* SecureHTTPAdapter.swift */,
 				366EB5C21CDF375B00E0E942 /* SpeedAdapter.swift */,
+				36B162321CDDA0F300F24C97 /* DirectAdapter.swift */,
+				368CBDA51D7911FA003CEA62 /* RejectAdapter.swift */,
+				36B162151CDDA0EA00F24C97 /* AdapterSocket.swift */,
+				3623479F1D824E4300A047DE /* SOCKS5Adapter.swift */,
+				366EB5AD1CDE0FCE00E0E942 /* SecureHTTPAdapter.swift */,
+				B2A649E9243C31690037B7D2 /* SOCKS5AuthAdapter.swift */,
 			);
 			path = AdapterSocket;
 			sourceTree = "<group>";
@@ -1068,7 +1070,7 @@
 				36C63E031D02C0B700A00CA2 /* TCPStack.swift */,
 				36E44A011CF2ED4800185DBF /* TUNInterface.swift */,
 				36411A781D1FC224005F4108 /* UDPDirectStack.swift */,
-				B2342115234EE61D00CDA2B3 /* UDPAssociateStack.swift */,
+				B2A649E6243C30FF0037B7D2 /* UDPAssociateStack.swift */,
 			);
 			path = IPStack;
 			sourceTree = "<group>";
@@ -1224,7 +1226,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
-				LastUpgradeCheck = 1020;
+				LastUpgradeCheck = 1130;
 				ORGANIZATIONNAME = "Zhuhao Wang";
 				TargetAttributes = {
 					362347121D7D44E700A047DE = {
@@ -1450,6 +1452,7 @@
 				36C63DF91D001FDA00A00CA2 /* IPPacket.swift in Sources */,
 				36C48DAC1CF9D6580071804F /* DNSEnums.swift in Sources */,
 				3664F0C01CE30957008BA6D8 /* StreamScanner.swift in Sources */,
+				B2A649E7243C30FF0037B7D2 /* UDPAssociateStack.swift in Sources */,
 				36411A591D13988A005F4108 /* GCDHTTPProxyServer.swift in Sources */,
 				36B1620F1CDDA0E000F24C97 /* CountryRule.swift in Sources */,
 				36B1623D1CDDA0F300F24C97 /* AdapterFactoryManager.swift in Sources */,
@@ -1467,6 +1470,7 @@
 				36411A621D167AE0005F4108 /* AllRule.swift in Sources */,
 				36B162301CDDA0EA00F24C97 /* Utils.swift in Sources */,
 				36B1622C1CDDA0EA00F24C97 /* SocketProtocol.swift in Sources */,
+				B2A649EA243C31690037B7D2 /* SOCKS5AuthAdapter.swift in Sources */,
 				36411A7C1D1FE696005F4108 /* ConnectSession.swift in Sources */,
 				36C63E011D02BDEC00A00CA2 /* IPStackProtocol.swift in Sources */,
 				36B212341D54C30600C8AC0A /* HTTPStreamScanner.swift in Sources */,
@@ -1561,13 +1565,13 @@
 				36C48D741CF88ED40071804F /* NWTCPSocket.swift in Sources */,
 				36C48D5A1CF88EB60071804F /* HTTPAdapterFactory.swift in Sources */,
 				3650FAE61D27BA5300444E79 /* SodiumStreamCrypto.swift in Sources */,
-				B2342114234EE60300CDA2B3 /* SOCKS5AuthAdapter.swift in Sources */,
 				36411A811D214D32005F4108 /* PacketProtocolParser.swift in Sources */,
 				36B8936F1E17F97600881890 /* ResponseGenerator.swift in Sources */,
 				36C48D571CF88EB60071804F /* AdapterFactory.swift in Sources */,
 				36C63DFA1D001FDA00A00CA2 /* IPPacket.swift in Sources */,
 				36C48DAD1CF9D6580071804F /* DNSEnums.swift in Sources */,
 				36C48D661CF88EBC0071804F /* Configuration.swift in Sources */,
+				B2A649E8243C30FF0037B7D2 /* UDPAssociateStack.swift in Sources */,
 				36411A5A1D13988A005F4108 /* GCDHTTPProxyServer.swift in Sources */,
 				36C48D701CF88ECB0071804F /* TUNInterface.swift in Sources */,
 				36C48D6C1CF88ECB0071804F /* Port.swift in Sources */,
@@ -1577,7 +1581,6 @@
 				36411A661D167AF2005F4108 /* DirectRule.swift in Sources */,
 				36C48D7A1CF88EDA0071804F /* DomainListRule.swift in Sources */,
 				36C48D621CF88EB60071804F /* ShadowsocksAdapter.swift in Sources */,
-				B2342116234EE61D00CDA2B3 /* UDPAssociateStack.swift in Sources */,
 				36411A631D167AE0005F4108 /* AllRule.swift in Sources */,
 				368CBDA71D7911FA003CEA62 /* RejectAdapter.swift in Sources */,
 				36C48D5F1CF88EB60071804F /* DirectAdapter.swift in Sources */,
@@ -1586,6 +1589,7 @@
 				36C63E021D02BDEC00A00CA2 /* IPStackProtocol.swift in Sources */,
 				36C48D731CF88ED40071804F /* GCDTCPSocket.swift in Sources */,
 				36411A7D1D1FE696005F4108 /* ConnectSession.swift in Sources */,
+				B2A649EB243C31690037B7D2 /* SOCKS5AuthAdapter.swift in Sources */,
 				36C48D711CF88ECF0071804F /* ProxyServer.swift in Sources */,
 				36B212351D54C30600C8AC0A /* HTTPStreamScanner.swift in Sources */,
 				36C63DC91CFD254100A00CA2 /* BinaryDataScanner.swift in Sources */,
@@ -1955,6 +1959,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "-";
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1974,6 +1979,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "-";
 				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

@@ -1,5 +1,14 @@
 import Foundation
 
+/**socks5的账号密码*/
+public class socks5Auth: NSObject {
+    public var host: String!
+    public var port: Int!
+    public var username: String!
+    public var password: String!
+    public var endtime:  TimeInterval!
+}
+
 public class SOCKS5AuthAdapterFactory: ServerAdapterFactory {
     let username: String
     let password: String

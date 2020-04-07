@@ -15,7 +15,7 @@ open class StreamScanner {
         self.maximumLength = maximumLength
     }
 
-    // 我知道如果有大量NSData，这不是最有效的算法，但是由于我们只需要在http标头中找到CRLF（到目前为止），并且应该在第一个readData调用中准备好它，所以没有 需要实现一种复杂的算法，这种算法在这种情况下很可能会变慢。
+    // I know this is not the most effcient algorithm if there is a large number of NSDatas, but since we only need to find the CRLF in http header (as of now), and it should be ready in the first readData call, there is no need to implement a complicate algorithm which is very likely to be slower in such case.
     open func addAndScan(_ data: Data) -> (Data?, Data)? {
         guard finished == false else {
             return nil

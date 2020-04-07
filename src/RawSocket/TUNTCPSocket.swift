@@ -226,7 +226,6 @@ public class TUNTCPSocket: RawTCPSocketProtocol, TSTCPSocketDelegate {
     open func didReadData(_ data: Data, from: TSTCPSocket) {
         queueCall {
             self.pendingReadData.append(data)
-//            self.reading = true
             self.checkReadData()
         }
     }
@@ -235,6 +234,7 @@ public class TUNTCPSocket: RawTCPSocketProtocol, TSTCPSocketDelegate {
         queueCall {
             self.remainWriteLength -= length
             if self.remainWriteLength <= 0 {
+
                 self.delegate?.didWrite(data: nil, by: self)
                 self.checkStatus()
             }

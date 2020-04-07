@@ -4,6 +4,10 @@
 
 **Take a look at the next generation of this project, [libnekit](https://github.com/zhuhaow/libnekit).**
 
+## 修改内容
+- 增加socks5的账号密码模式`SOCKS5AuthAdapter`
+- 增加socks5的udp转发模式`UDPAssociateStack`
+
 A toolkit for Network Extension Framework.
 
 NEKit is the successor of [Soca](https://github.com/zhuhaow/soca-ios). The main goal of NEKit is to provide things needed in building a Network Extension app with `NETunnelProvider` to bypass network filtering and censorship while keep the framework as non-opinionated as possible.

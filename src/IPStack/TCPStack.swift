@@ -51,11 +51,7 @@ open class TCPStack: TSIPStackDelegate, IPStackProtocol {
             }
         }
         if IPPacket.peekProtocol(packet) == .tcp {
-            DDLogInfo("读取TCP包的大小:\(packet.count) 字节")
             TSIPStack.stack.received(packet: packet)
-//            QueueFactory.getQueue().asyncAfter(deadline: .now()+0.1) {
-//                TSIPStack.stack.received(packet: packet)
-//            }
             return true
         }
         return false
@@ -78,7 +74,7 @@ open class TCPStack: TSIPStackDelegate, IPStackProtocol {
     
     // MARK: TSIPStackDelegate Implementation
     open func didAcceptTCPSocket(_ sock: TSTCPSocket) {
-        DDLogInfo("Accepted a new socket from IP stack.")
+        DDLogDebug("Accepted a new socket from IP stack.")
         let tunSocket = TUNTCPSocket(socket: sock)
         let proxySocket = DirectProxySocket(socket: tunSocket)
         self.proxyServer!.didAcceptNewSocket(proxySocket)
