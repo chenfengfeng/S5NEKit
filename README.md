@@ -7,6 +7,7 @@
 ## 修改内容
 - 增加socks5的账号密码模式`SOCKS5AuthAdapter`
 - 增加socks5的udp转发模式`UDPAssociateStack`
+- MMDB数据库下载地址：[GeoLite2-Country](https://www.maxmind.com/en/accounts/169826/geoip/downloads)
 
 A toolkit for Network Extension Framework.
 
