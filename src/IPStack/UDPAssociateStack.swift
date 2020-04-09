@@ -45,9 +45,9 @@ public class SOCKS5AssociateAdapter: AdapterSocket {
             self.password = nil
         }
         if username != nil && password != nil {
-            helloData = Data(bytes: UnsafePointer<UInt8>(([0x05, 0x01, 0x02] as [UInt8])), count: 3)
+            helloData = Data([0x05, 0x01, 0x02])
         } else {
-            helloData = Data(bytes: UnsafePointer<UInt8>(([0x05, 0x01, 0x00] as [UInt8])), count: 3)
+            helloData = Data([0x05, 0x01, 0x00])
         }
         super.init()
     }

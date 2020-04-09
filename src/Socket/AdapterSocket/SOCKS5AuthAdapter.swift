@@ -39,7 +39,7 @@ class SOCKS5AuthAdapter: SOCKS5Adapter {
         self.password = password.data(using: .utf8)!
         self.endtime  = endtime
         super.init(serverHost: serverHost, serverPort: serverPort)
-        self.helloData = Data(bytes: UnsafePointer<UInt8>(([0x05, 0x01, 0x02] as [UInt8])), count: 3)
+        self.helloData = Data([0x05, 0x01, 0x02])
     }
 
     override func didConnectWith(socket: RawTCPSocketProtocol) {
