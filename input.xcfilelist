@@ -1,0 +1,9 @@
+$(SRCROOT)/Carthage/Build/iOS/Resolver.framework
+$(SRCROOT)/Carthage/Build/iOS/CocoaAsyncSocket.framework
+$(SRCROOT)/Carthage/Build/iOS/CocoaLumberjack.framework
+$(SRCROOT)/Carthage/Build/iOS/CocoaLumberjackSwift.framework
+$(SRCROOT)/Carthage/Build/iOS/Sodium.framework
+$(SRCROOT)/Carthage/Build/iOS/Yaml.framework
+$(SRCROOT)/Carthage/Build/iOS/lwip.framework
+$(SRCROOT)/Carthage/Build/iOS/MMDB.framework
+$(SRCROOT)/Carthage/Build/iOS/tun2socks.framework

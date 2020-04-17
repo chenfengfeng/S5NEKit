@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -288,6 +288,30 @@
 		36E9CD001DD6EEF5003597CE /* QueueFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36E9CCFE1DD6EEF5003597CE /* QueueFactory.swift */; };
 		36E9CD041DD6F0DE003597CE /* Resolver.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 360F392B1DD2068E002BED59 /* Resolver.framework */; };
 		36E9CD051DD6F0DE003597CE /* Resolver.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 360F392B1DD2068E002BED59 /* Resolver.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		B21E7DB3244945E7004145F5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B21E7DB2244945E7004145F5 /* AppDelegate.swift */; };
+		B21E7DB5244945E7004145F5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B21E7DB4244945E7004145F5 /* SceneDelegate.swift */; };
+		B21E7DB7244945E7004145F5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B21E7DB6244945E7004145F5 /* ViewController.swift */; };
+		B21E7DBA244945E7004145F5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B21E7DB8244945E7004145F5 /* Main.storyboard */; };
+		B21E7DBC244945EA004145F5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B21E7DBB244945EA004145F5 /* Assets.xcassets */; };
+		B21E7DBF244945EA004145F5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B21E7DBD244945EA004145F5 /* LaunchScreen.storyboard */; };
+		B21E7DCB24494689004145F5 /* PacketTunnelProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B21E7DCA24494689004145F5 /* PacketTunnelProvider.swift */; };
+		B21E7DD024494689004145F5 /* pt.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = B21E7DC824494689004145F5 /* pt.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		B21E7DD524494787004145F5 /* CocoaLumberjackSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36C4B7CB1D6C508100F2BDCD /* CocoaLumberjackSwift.framework */; };
+		B21E7DD92449487E004145F5 /* VpnManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B21E7DD82449487E004145F5 /* VpnManager.swift */; };
+		B21E7DDA24494B73004145F5 /* NEKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36C48D4D1CF88DED0071804F /* NEKit.framework */; };
+		B21E7DDE24494B89004145F5 /* CocoaAsyncSocket.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36C4B7C91D6C508100F2BDCD /* CocoaAsyncSocket.framework */; };
+		B21E7DE024494B89004145F5 /* CocoaLumberjack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36C4B7CA1D6C508100F2BDCD /* CocoaLumberjack.framework */; };
+		B21E7DE224494B89004145F5 /* CocoaLumberjackSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36C4B7CB1D6C508100F2BDCD /* CocoaLumberjackSwift.framework */; };
+		B21E7DE524494B89004145F5 /* MMDB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36C4B7CE1D6C508100F2BDCD /* MMDB.framework */; };
+		B21E7DEB24494B89004145F5 /* Resolver.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 360F392E1DD20774002BED59 /* Resolver.framework */; };
+		B21E7DED24494B89004145F5 /* Sodium.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36C4B7CF1D6C508100F2BDCD /* Sodium.framework */; };
+		B21E7DEF24494B89004145F5 /* tun2socks.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36C4B7D01D6C508100F2BDCD /* tun2socks.framework */; };
+		B21E7DF124494B89004145F5 /* Yaml.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36C4B7D11D6C508100F2BDCD /* Yaml.framework */; };
+		B21E7DF524494CBA004145F5 /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B21E7DF424494CBA004145F5 /* NetworkExtension.framework */; };
+		B21E7DF624494CC9004145F5 /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B21E7DF424494CBA004145F5 /* NetworkExtension.framework */; };
+		B21E7DF924495710004145F5 /* GeoLite2-Country.mmdb in Resources */ = {isa = PBXBuildFile; fileRef = B21E7DF824495710004145F5 /* GeoLite2-Country.mmdb */; };
+		B21E7E15244958F7004145F5 /* lwip.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36C4B7CD1D6C508100F2BDCD /* lwip.framework */; };
+		B21E7E1C24495CAE004145F5 /* NEKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 36C48D4D1CF88DED0071804F /* NEKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B2A649E7243C30FF0037B7D2 /* UDPAssociateStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2A649E6243C30FF0037B7D2 /* UDPAssociateStack.swift */; };
 		B2A649E8243C30FF0037B7D2 /* UDPAssociateStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2A649E6243C30FF0037B7D2 /* UDPAssociateStack.swift */; };
 		B2A649EA243C31690037B7D2 /* SOCKS5AuthAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2A649E9243C31690037B7D2 /* SOCKS5AuthAdapter.swift */; };
@@ -315,6 +339,27 @@
 			proxyType = 1;
 			remoteGlobalIDString = 36463A2F1CDCD5EB0040579C;
 			remoteInfo = "NEKit-macOS";
+		};
+		B21E7DCE24494689004145F5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 36463A271CDCD5EB0040579C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B21E7DC724494689004145F5;
+			remoteInfo = pt;
+		};
+		B21E7DDC24494B73004145F5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 36463A271CDCD5EB0040579C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 36C48D4C1CF88DED0071804F;
+			remoteInfo = "NEKit-iOS";
+		};
+		B21E7E1824495C2A004145F5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 36463A271CDCD5EB0040579C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 36C48D4C1CF88DED0071804F;
+			remoteInfo = "NEKit-iOS";
 		};
 /* End PBXContainerItemProxy section */
 
@@ -393,6 +438,28 @@
 				36A719B81D5EEB5900DC35F5 /* NEKit.framework in Embed Frameworks */,
 				36C4B81C1D6C51A400F2BDCD /* MMDB.framework in Embed Frameworks */,
 				36E9CD051DD6F0DE003597CE /* Resolver.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B21E7DD424494689004145F5 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				B21E7DD024494689004145F5 /* pt.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B21E7E1B24495C7B004145F5 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				B21E7E1C24495CAE004145F5 /* NEKit.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -559,6 +626,22 @@
 		36DB3CEE1E0D610500D907DB /* IPAddressSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IPAddressSpec.swift; sourceTree = "<group>"; };
 		36E44A011CF2ED4800185DBF /* TUNInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TUNInterface.swift; sourceTree = "<group>"; };
 		36E9CCFE1DD6EEF5003597CE /* QueueFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = QueueFactory.swift; path = Tunnel/QueueFactory.swift; sourceTree = "<group>"; };
+		B21E7DB0244945E6004145F5 /* demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = demo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B21E7DB2244945E7004145F5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		B21E7DB4244945E7004145F5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		B21E7DB6244945E7004145F5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		B21E7DB9244945E7004145F5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		B21E7DBB244945EA004145F5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		B21E7DBE244945EA004145F5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		B21E7DC0244945EA004145F5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B21E7DC824494689004145F5 /* pt.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = pt.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		B21E7DCA24494689004145F5 /* PacketTunnelProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PacketTunnelProvider.swift; sourceTree = "<group>"; };
+		B21E7DCC24494689004145F5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B21E7DCD24494689004145F5 /* pt.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = pt.entitlements; sourceTree = "<group>"; };
+		B21E7DD82449487E004145F5 /* VpnManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VpnManager.swift; sourceTree = "<group>"; };
+		B21E7DF324494CBA004145F5 /* demo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = demo.entitlements; sourceTree = "<group>"; };
+		B21E7DF424494CBA004145F5 /* NetworkExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NetworkExtension.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS13.4.sdk/System/Library/Frameworks/NetworkExtension.framework; sourceTree = DEVELOPER_DIR; };
+		B21E7DF824495710004145F5 /* GeoLite2-Country.mmdb */ = {isa = PBXFileReference; lastKnownFileType = file; path = "GeoLite2-Country.mmdb"; sourceTree = "<group>"; };
 		B2A649E6243C30FF0037B7D2 /* UDPAssociateStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UDPAssociateStack.swift; sourceTree = "<group>"; };
 		B2A649E9243C31690037B7D2 /* SOCKS5AuthAdapter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SOCKS5AuthAdapter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -633,12 +716,40 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		B21E7DAD244945E6004145F5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B21E7DF524494CBA004145F5 /* NetworkExtension.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B21E7DC524494689004145F5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B21E7DF124494B89004145F5 /* Yaml.framework in Frameworks */,
+				B21E7DDE24494B89004145F5 /* CocoaAsyncSocket.framework in Frameworks */,
+				B21E7DDA24494B73004145F5 /* NEKit.framework in Frameworks */,
+				B21E7DE024494B89004145F5 /* CocoaLumberjack.framework in Frameworks */,
+				B21E7DD524494787004145F5 /* CocoaLumberjackSwift.framework in Frameworks */,
+				B21E7DEF24494B89004145F5 /* tun2socks.framework in Frameworks */,
+				B21E7E15244958F7004145F5 /* lwip.framework in Frameworks */,
+				B21E7DE224494B89004145F5 /* CocoaLumberjackSwift.framework in Frameworks */,
+				B21E7DED24494B89004145F5 /* Sodium.framework in Frameworks */,
+				B21E7DEB24494B89004145F5 /* Resolver.framework in Frameworks */,
+				B21E7DE524494B89004145F5 /* MMDB.framework in Frameworks */,
+				B21E7DF624494CC9004145F5 /* NetworkExtension.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		360F392A1DD2068D002BED59 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B21E7DF424494CBA004145F5 /* NetworkExtension.framework */,
 				36C48D9B1CF9483F0071804F /* iOS */,
 				36C48D9C1CF948500071804F /* macOS */,
 			);
@@ -735,6 +846,8 @@
 		36463A261CDCD5EB0040579C = {
 			isa = PBXGroup;
 			children = (
+				B21E7DB1244945E7004145F5 /* demo */,
+				B21E7DC924494689004145F5 /* pt */,
 				360F392A1DD2068D002BED59 /* Frameworks */,
 				36C48D4E1CF88DED0071804F /* NEKit-iOS */,
 				368225B91D12484D00E7B495 /* NEKit-macOS */,
@@ -769,6 +882,8 @@
 				36A719981D5EEB4900DC35F5 /* NEKitDemo.app */,
 				362347131D7D44E700A047DE /* NEKitTest-macOS.xctest */,
 				362347221D7D458E00A047DE /* NEKitTests-iOS.xctest */,
+				B21E7DB0244945E6004145F5 /* demo.app */,
+				B21E7DC824494689004145F5 /* pt.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1096,6 +1211,33 @@
 			name = IP;
 			sourceTree = "<group>";
 		};
+		B21E7DB1244945E7004145F5 /* demo */ = {
+			isa = PBXGroup;
+			children = (
+				B21E7DF324494CBA004145F5 /* demo.entitlements */,
+				B21E7DB2244945E7004145F5 /* AppDelegate.swift */,
+				B21E7DB4244945E7004145F5 /* SceneDelegate.swift */,
+				B21E7DD82449487E004145F5 /* VpnManager.swift */,
+				B21E7DB6244945E7004145F5 /* ViewController.swift */,
+				B21E7DB8244945E7004145F5 /* Main.storyboard */,
+				B21E7DBB244945EA004145F5 /* Assets.xcassets */,
+				B21E7DBD244945EA004145F5 /* LaunchScreen.storyboard */,
+				B21E7DC0244945EA004145F5 /* Info.plist */,
+			);
+			path = demo;
+			sourceTree = "<group>";
+		};
+		B21E7DC924494689004145F5 /* pt */ = {
+			isa = PBXGroup;
+			children = (
+				B21E7DCC24494689004145F5 /* Info.plist */,
+				B21E7DCD24494689004145F5 /* pt.entitlements */,
+				B21E7DF824495710004145F5 /* GeoLite2-Country.mmdb */,
+				B21E7DCA24494689004145F5 /* PacketTunnelProvider.swift */,
+			);
+			path = pt;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -1219,13 +1361,53 @@
 			productReference = 36C48D4D1CF88DED0071804F /* NEKit.framework */;
 			productType = "com.apple.product-type.framework";
 		};
+		B21E7DAF244945E6004145F5 /* demo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B21E7DC3244945EA004145F5 /* Build configuration list for PBXNativeTarget "demo" */;
+			buildPhases = (
+				B21E7DAC244945E6004145F5 /* Sources */,
+				B21E7DAD244945E6004145F5 /* Frameworks */,
+				B21E7DAE244945E6004145F5 /* Resources */,
+				B21E7E1B24495C7B004145F5 /* Embed Frameworks */,
+				B21E7DD424494689004145F5 /* Embed App Extensions */,
+				B21E7DF72449565D004145F5 /* Run Script */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B21E7E1924495C2A004145F5 /* PBXTargetDependency */,
+				B21E7DCF24494689004145F5 /* PBXTargetDependency */,
+			);
+			name = demo;
+			productName = demo;
+			productReference = B21E7DB0244945E6004145F5 /* demo.app */;
+			productType = "com.apple.product-type.application";
+		};
+		B21E7DC724494689004145F5 /* pt */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B21E7DD124494689004145F5 /* Build configuration list for PBXNativeTarget "pt" */;
+			buildPhases = (
+				B21E7DC424494689004145F5 /* Sources */,
+				B21E7DC524494689004145F5 /* Frameworks */,
+				B21E7DC624494689004145F5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B21E7DDD24494B73004145F5 /* PBXTargetDependency */,
+			);
+			name = pt;
+			productName = pt;
+			productReference = B21E7DC824494689004145F5 /* pt.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		36463A271CDCD5EB0040579C /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0730;
+				LastSwiftUpdateCheck = 1140;
 				LastUpgradeCheck = 1130;
 				ORGANIZATIONNAME = "Zhuhao Wang";
 				TargetAttributes = {
@@ -1251,6 +1433,12 @@
 						LastSwiftMigration = 1020;
 						ProvisioningStyle = Automatic;
 					};
+					B21E7DAF244945E6004145F5 = {
+						CreatedOnToolsVersion = 11.4.1;
+					};
+					B21E7DC724494689004145F5 = {
+						CreatedOnToolsVersion = 11.4.1;
+					};
 				};
 			};
 			buildConfigurationList = 36463A2A1CDCD5EB0040579C /* Build configuration list for PBXProject "NEKit" */;
@@ -1271,6 +1459,8 @@
 				36A719971D5EEB4900DC35F5 /* NEKitDemo */,
 				362347121D7D44E700A047DE /* NEKitTest-macOS */,
 				362347211D7D458E00A047DE /* NEKitTests-iOS */,
+				B21E7DAF244945E6004145F5 /* demo */,
+				B21E7DC724494689004145F5 /* pt */,
 			);
 		};
 /* End PBXProject section */
@@ -1310,6 +1500,24 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B21E7DAE244945E6004145F5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B21E7DBF244945EA004145F5 /* LaunchScreen.storyboard in Resources */,
+				B21E7DBC244945EA004145F5 /* Assets.xcassets in Resources */,
+				B21E7DBA244945E7004145F5 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B21E7DC624494689004145F5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B21E7DF924495710004145F5 /* GeoLite2-Country.mmdb in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1355,6 +1563,26 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "git=$(sh /etc/profile; which git)\ngit_release_version=$(\"$git\" describe --tags --always --abbrev=0)\nnumber_of_commits=$(\"$git\" rev-list master --count)\ntarget_plist=\"$TARGET_BUILD_DIR/$INFOPLIST_PATH\"\ndsym_plist=\"$DWARF_DSYM_FOLDER_PATH/$DWARF_DSYM_FILE_NAME/Contents/Info.plist\"\n\nfor plist in \"$target_plist\" \"$dsym_plist\"; do\n  if [ -f \"$plist\" ]; then\n    /usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $number_of_commits\" \"$plist\"\n    /usr/libexec/PlistBuddy -c \"Set :CFBundleShortVersionString ${git_release_version#*v}\" \"$plist\"\n  fi\ndone\n";
+		};
+		B21E7DF72449565D004145F5 /* Run Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"$(SRCROOT)/input.xcfilelist",
+			);
+			inputPaths = (
+			);
+			name = "Run Script";
+			outputFileListPaths = (
+				"$(SRCROOT)/output.xcfilelist",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n/usr/local/bin/carthage copy-frameworks\n";
 		};
 		B596614759D8E2954DE5A031 /* Warn for TODO and FIXME comments */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1651,6 +1879,25 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		B21E7DAC244945E6004145F5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B21E7DB7244945E7004145F5 /* ViewController.swift in Sources */,
+				B21E7DB3244945E7004145F5 /* AppDelegate.swift in Sources */,
+				B21E7DD92449487E004145F5 /* VpnManager.swift in Sources */,
+				B21E7DB5244945E7004145F5 /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B21E7DC424494689004145F5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B21E7DCB24494689004145F5 /* PacketTunnelProvider.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -1669,6 +1916,21 @@
 			target = 36463A2F1CDCD5EB0040579C /* NEKit-macOS */;
 			targetProxy = 36A719B91D5EEB5900DC35F5 /* PBXContainerItemProxy */;
 		};
+		B21E7DCF24494689004145F5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B21E7DC724494689004145F5 /* pt */;
+			targetProxy = B21E7DCE24494689004145F5 /* PBXContainerItemProxy */;
+		};
+		B21E7DDD24494B73004145F5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 36C48D4C1CF88DED0071804F /* NEKit-iOS */;
+			targetProxy = B21E7DDC24494B73004145F5 /* PBXContainerItemProxy */;
+		};
+		B21E7E1924495C2A004145F5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 36C48D4C1CF88DED0071804F /* NEKit-iOS */;
+			targetProxy = B21E7E1824495C2A004145F5 /* PBXContainerItemProxy */;
+		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
@@ -1679,6 +1941,22 @@
 			);
 			name = MainMenu.xib;
 			path = .;
+			sourceTree = "<group>";
+		};
+		B21E7DB8244945E7004145F5 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B21E7DB9244945E7004145F5 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		B21E7DBD244945EA004145F5 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B21E7DBE244945EA004145F5 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -1695,7 +1973,11 @@
 				);
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				INFOPLIST_FILE = "NEKitTest-macOS/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = me.zhuhaow.NEKit.Test;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -1714,7 +1996,11 @@
 				);
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				INFOPLIST_FILE = "NEKitTest-macOS/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = me.zhuhaow.NEKit.Test;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -1733,7 +2019,11 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				INFOPLIST_FILE = "NEKitTests-iOS/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = me.zhuhaow.NEKit.Test;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
@@ -1754,7 +2044,11 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				INFOPLIST_FILE = "NEKitTests-iOS/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = me.zhuhaow.NEKit.Test;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
@@ -1892,7 +2186,8 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = macosx;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -1917,7 +2212,11 @@
 				FRAMEWORK_VERSION = A;
 				INFOPLIST_FILE = "NEKit-macOS/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = me.zhuhaow.NEKit;
 				PRODUCT_NAME = "$(PROJECT_NAME)";
 				SKIP_INSTALL = YES;
@@ -1946,7 +2245,11 @@
 				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
 				INFOPLIST_FILE = "NEKit-macOS/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = me.zhuhaow.NEKit;
 				PRODUCT_NAME = "$(PROJECT_NAME)";
 				SKIP_INSTALL = YES;
@@ -1967,7 +2270,10 @@
 				);
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				INFOPLIST_FILE = NEKitDemo/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = me.zhuhaow.osx.NEKitDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -1987,7 +2293,10 @@
 				);
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				INFOPLIST_FILE = NEKitDemo/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = me.zhuhaow.osx.NEKitDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -2017,7 +2326,11 @@
 				INFOPLIST_FILE = "NEKit-iOS/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = me.zhuhaow.NEKit;
 				PRODUCT_NAME = "$(PROJECT_NAME)";
 				SDKROOT = iphoneos;
@@ -2048,13 +2361,175 @@
 				INFOPLIST_FILE = "NEKit-iOS/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = me.zhuhaow.NEKit;
 				PRODUCT_NAME = "$(PROJECT_NAME)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		B21E7DC1244945EA004145F5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_ENTITLEMENTS = demo/demo.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = AGMBB8FNU5;
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				INFOPLIST_FILE = demo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mt.nekit.demo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		B21E7DC2244945EA004145F5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_ENTITLEMENTS = demo/demo.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = AGMBB8FNU5;
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				INFOPLIST_FILE = demo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mt.nekit.demo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		B21E7DD224494689004145F5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_ENTITLEMENTS = pt/pt.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = AGMBB8FNU5;
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				INFOPLIST_FILE = pt/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mt.nekit.demo.pt;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		B21E7DD324494689004145F5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_ENTITLEMENTS = pt/pt.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = AGMBB8FNU5;
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				INFOPLIST_FILE = pt/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mt.nekit.demo.pt;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -2112,6 +2587,24 @@
 			buildConfigurations = (
 				36C48D531CF88DED0071804F /* Debug */,
 				36C48D541CF88DED0071804F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B21E7DC3244945EA004145F5 /* Build configuration list for PBXNativeTarget "demo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B21E7DC1244945EA004145F5 /* Debug */,
+				B21E7DC2244945EA004145F5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B21E7DD124494689004145F5 /* Build configuration list for PBXNativeTarget "pt" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B21E7DD224494689004145F5 /* Debug */,
+				B21E7DD324494689004145F5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
