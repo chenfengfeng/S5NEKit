@@ -79,7 +79,7 @@ public class NWUDPSocket: NSObject {
                     sSelf.delegate?.didReceive(data: data, from: sSelf)
                 }
             }
-            }, maxDatagrams: 32)
+            }, maxDatagrams: 64)
     }
     
     /**
@@ -88,8 +88,10 @@ public class NWUDPSocket: NSObject {
      - parameter data: The data to send.
      */
     public func write(data: Data) {
-        pendingWriteData.append(data)
-        checkWrite()
+        queueCall {
+            self.pendingWriteData.append(data)
+            self.checkWrite()
+        }
     }
     
     public func disconnect() {

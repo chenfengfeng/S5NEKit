@@ -2,8 +2,7 @@ import Foundation
 import CocoaLumberjackSwift
 
 public class SOCKS5AssociateAdapter: AdapterSocket {
-    public var host: String?    // 这两个变量是 UDP Associate 命令后返回的
-    public var port: Int?       // 供建立 UWUDPSocket 使用
+    
     enum SOCKS5AssociateStatus {
         case invalid,
         connecting,
@@ -11,12 +10,15 @@ public class SOCKS5AssociateAdapter: AdapterSocket {
         readingAuthResponse,
         readingAssociateAddr
     }
+    
+    public var host: String?    // 这两个变量是 UDP Associate 命令后返回的
+    public var port: Int?       // 供建立 UWUDPSocket 使用
     public let serverHost: String
     public let serverPort: Int
     let username: Data?
     let password: Data?
     var helloData: Data
-    let associateData = Data([0x05, 0x03 , 0x00 , 0x01 ,
+    let associateData = Data([0x05, 0x03, 0x00, 0x01,
                               0x00, 0x00, 0x00, 0x00,
                               0x00, 0x00 ])
 
@@ -186,7 +188,6 @@ public class UDPAssociateStack: IPStackProtocol, NWUDPSocketDelegate {
             }
         }
         if IPPacket.peekProtocol(packet) == .udp {
-            DDLogInfo("读取UDP包的大小:\(packet.count) 字节")
             input(packet)
             return true
         }
@@ -203,7 +204,7 @@ public class UDPAssociateStack: IPStackProtocol, NWUDPSocketDelegate {
                 session.socket?.disconnect()
                 session.agent?.socket.disconnect()
             }
-            self.activeSessions = [:]
+            self.activeSessions.removeAll()
         }
     }
 
@@ -230,6 +231,7 @@ public class UDPAssociateStack: IPStackProtocol, NWUDPSocketDelegate {
             udpSocket.delegate = self
             queue.sync {
                 self.activeSessions[info]!.socket = udpSocket
+                NSLog("UDP数组数量：%d", self.activeSessions.count)
             }
             session.socket = udpSocket
         }
@@ -292,6 +294,7 @@ public class UDPAssociateStack: IPStackProtocol, NWUDPSocketDelegate {
 
         queue.sync {
             self.activeSessions[connectInfo] = session
+            NSLog("UDP数组数量：%d", self.activeSessions.count)
         }
         return (connectInfo, session)
     }
@@ -329,5 +332,6 @@ public class UDPAssociateStack: IPStackProtocol, NWUDPSocketDelegate {
         }
 
         activeSessions.removeValue(forKey: info)
+        NSLog("删除udp数组,还剩下数量:%d", activeSessions.count)
     }
 }

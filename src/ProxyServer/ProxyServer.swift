@@ -86,6 +86,7 @@ open class ProxyServer: NSObject, TunnelDelegate {
         tunnel.delegate = self
         tunnels.append(tunnel)
         tunnel.openTunnel()
+        NSLog("TCP数组数量：%d", self.tunnels.count)
     }
 
     // MARK: TunnelDelegate implementation
@@ -103,5 +104,6 @@ open class ProxyServer: NSObject, TunnelDelegate {
         }
 
         tunnels.remove(at: index)
+        NSLog("删除TCP连接数组,当前剩下连接数量：%d", tunnels.count)
     }
 }
